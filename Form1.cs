@@ -17,16 +17,16 @@ namespace simple_form_calculator
             InitializeComponent();
         }
 
-        class Calculator 
+        public class clsCalculator 
         {
-            Calculator(double fstNmb, double sndNmb)
+            clsCalculator(double fstNmb, double sndNmb)
             {
-                _lastResult = fstNmb;
-                _lastResult = sndNmb;
+                _frstnumber = fstNmb;
+                _scndnumber = sndNmb;
             }
 
-            double _lastNmbr = 0.0;
-            double _lastResult = 0.0;
+            double _frstnumber = 0.0;
+            double _scndnumber = 0.0;
             double _result = 0.0;
 
             private bool isZero(double Nmb)
@@ -35,42 +35,32 @@ namespace simple_form_calculator
             }
 
 
-            public double Add(double fn , double sn)
+            public double Add()
             {
-                _lastNmbr = fn;
-                _lastResult = _result;
-                _result += fn + sn;
+                _result = 0.0;
+                _result = _frstnumber + _scndnumber;
                 return _result;
             }
 
-            public double Sub(double fn, double sn)
+            public double Sub()
             {
-                _lastNmbr = fn;
-                _lastResult = _result;
-                _result += fn - sn;
+                _result = 0.0;
+                _result = _frstnumber - _scndnumber;
                 return _result;
             }
 
-            public double Mlt(double fn, double sn)
+            public double Mlt()
             {
-                _lastNmbr = fn;
-                _lastResult = _result;
-                _result += fn * sn;
+                _result = 0.0;
+                _result = _frstnumber * _scndnumber;
                 return _result;
             }
 
             public void clear()
             {
-                _lastNmbr = 0.0;
-                _lastResult = 0.0;
+                _frstnumber = 0.0;
+                _scndnumber = 0.0;
                 _result = 0.0;
-            }
-
-            public void CancelLastOperation()
-            {
-                _lastNmbr = 0.0;
-                _result = _lastResult;
-
             }
 
             public double FinalResult()
@@ -80,10 +70,12 @@ namespace simple_form_calculator
 
             public double Div(double fn, double sn)
             {
-                if (isZero(sn)) sn = 1;
-                _lastNmbr = fn;
-                _lastResult = _result;
-                _result += fn / sn;
+                _result = 0.0;
+
+                if (_frstnumber == 0) _frstnumber = 1;
+                if (_scndnumber == 0) _scndnumber = 1;
+
+                _result = _frstnumber / _scndnumber;
                 return _result;
             }
 
@@ -207,11 +199,14 @@ namespace simple_form_calculator
 
         }
 
+
+        //clsCalculator cal = new clsCalculator();
+        clsCalculator cal = new clsCalculator(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
+
         private void btnEqual_Click(object sender, EventArgs e)
         {
             lblfrst.Text = ""; lblfrst.Text += 0; lblscnd.Text = ""; lblscnd.Text += 0;
 
-            Calculator cal = new Calculator(Convert.ToDouble(lblfrst.Text) , Convert.ToDouble(lblscnd.Text));
 
             if (btnPlus.Enabled)
             {
