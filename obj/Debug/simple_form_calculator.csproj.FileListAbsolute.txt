@@ -1,0 +1,10 @@
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\bin\Debug\simple_form_calculator.exe.config
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\bin\Debug\simple_form_calculator.exe
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\bin\Debug\simple_form_calculator.pdb
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\obj\Debug\simple_form_calculator.csproj.AssemblyReference.cache
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\obj\Debug\simple_form_calculator.Form1.resources
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\obj\Debug\simple_form_calculator.Properties.Resources.resources
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\obj\Debug\simple_form_calculator.csproj.GenerateResource.cache
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\obj\Debug\simple_form_calculator.csproj.CoreCompileInputs.cache
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\obj\Debug\simple_form_calculator.exe
+C:\Users\smart\Dropbox\CsharpProgramming\simple_form_calculator\simple_form_calculator\obj\Debug\simple_form_calculator.pdb
