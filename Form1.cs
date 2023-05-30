@@ -17,18 +17,26 @@ namespace simple_form_calculator
             InitializeComponent();
         }
 
-        public class clsCalculator 
+        // to Prevent making an object from Class
+        //static class clsCalculator
+        class clsCalculator
+
         {
             
-            public clsCalculator(double fstNmb, double sndNmb)
+            //public clsCalculator(double fstNmb, double sndNmb)
+            //{
+            //    this._frstnumber = fstNmb;
+            //    this._scndnumber = sndNmb;
+            //}
+
+            private clsCalculator()
             {
-                this._frstnumber = fstNmb;
-                this._scndnumber = sndNmb;
+
             }
 
-            private double _frstnumber { get; set; }
-            private double _scndnumber { get; set; }
-            private double _result = 0.0;
+            //private double _frstnumber { get; set; }
+            //private double _scndnumber { get; set; }
+            public double _result = 0.0;
 
             private bool isZero(double Nmb)
             {
@@ -36,48 +44,39 @@ namespace simple_form_calculator
             }
 
 
-            public double Add()
+            public static double Add( double frstnumber, double scndnumber)
             {
-                _result = 0.0;
-                _result = _frstnumber + _scndnumber;
-                return _result;
+                return frstnumber + scndnumber;
             }
 
-            public double Sub()
+            public static double Sub(double frstnumber, double scndnumber)
             {
-                _result = 0.0;
-                _result = _frstnumber - _scndnumber;
-                return _result;
+                return frstnumber - scndnumber;
             }
 
-            public double Mlt()
+            public static double Mlt(double frstnumber, double scndnumber)
             {
-                _result = 0.0;
-                _result = _frstnumber * _scndnumber;
-                return _result;
+                return frstnumber * scndnumber;
             }
 
-            public void clear()
+            //public void clear()
+            //{
+            //    _frstnumber = 0.0;
+            //    _scndnumber = 0.0;
+            //    _result = 0.0;
+            //}
+
+            //public double FinalResult()
+            //{
+            //    return _result;
+            //}
+
+            public static double Div(double frstnumber, double scndnumber)
             {
-                _frstnumber = 0.0;
-                _scndnumber = 0.0;
-                _result = 0.0;
-            }
+                if (frstnumber == 0) frstnumber = 1;
+                if (scndnumber == 0) scndnumber = 1;
 
-            public double FinalResult()
-            {
-                return _result;
-            }
-
-            public double Div()
-            {
-                _result = 0.0;
-
-                if (_frstnumber == 0) _frstnumber = 1;
-                if (_scndnumber == 0) _scndnumber = 1;
-
-                _result = _frstnumber / _scndnumber;
-                return _result;
+                return frstnumber / scndnumber;
             }
 
         }
@@ -88,8 +87,8 @@ namespace simple_form_calculator
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if(frstNmb) lblfrst.Text = ""; lblfrst.Text += 0;
-            if(scndNmb) lblscnd.Text = ""; lblscnd.Text += 0;
+            if(frstNmb) lblfrst.Text = "";
+            if(scndNmb) lblscnd.Text = "";
         }
 
         private void bzero_Click(object sender, EventArgs e)
@@ -204,34 +203,35 @@ namespace simple_form_calculator
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            lblfrst.Text = ""; lblfrst.Text += 0; lblscnd.Text = ""; lblscnd.Text += 0;
 
-            clsCalculator cal = new clsCalculator(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
+            //clsCalculator cal = new clsCalculator(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
 
             if (btnPlus.Enabled)
             {
                 results = 0;                 
-                results = cal.Add();
+                results = clsCalculator.Add(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
             
             } 
             else if (btnMinus.Enabled)
             {
                 results = 0;
-                results = cal.Sub();
+                results = clsCalculator.Sub(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
             
             } 
             else if (btnMulti.Enabled)
             {
                 results = 0;
-                results = cal.Mlt();                        
+                results = clsCalculator.Mlt(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));                        
             } 
             else
             {
                 results = 0;
-                results = cal.Div();
+                results = clsCalculator.Div(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
             }        
 
             lblresult.Text = results.ToString();
+
+            lblfrst.Text = ""; lblscnd.Text = "";
 
             frstNmb = true; scndNmb = false;
             

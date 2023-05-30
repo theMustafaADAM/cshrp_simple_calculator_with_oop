@@ -69,7 +69,6 @@ namespace simple_form_calculator
             this.lblresult.Name = "lblresult";
             this.lblresult.Size = new System.Drawing.Size(245, 36);
             this.lblresult.TabIndex = 1;
-            this.lblresult.Text = "0";
             this.lblresult.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // bnine
@@ -257,7 +256,6 @@ namespace simple_form_calculator
             this.lblscnd.Name = "lblscnd";
             this.lblscnd.Size = new System.Drawing.Size(245, 36);
             this.lblscnd.TabIndex = 17;
-            this.lblscnd.Text = "0";
             this.lblscnd.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // lblfrst
@@ -268,7 +266,6 @@ namespace simple_form_calculator
             this.lblfrst.Name = "lblfrst";
             this.lblfrst.Size = new System.Drawing.Size(245, 36);
             this.lblfrst.TabIndex = 18;
-            this.lblfrst.Text = "0";
             this.lblfrst.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // Form1
