@@ -36,7 +36,7 @@ namespace simple_form_calculator
 
             //private double _frstnumber { get; set; }
             //private double _scndnumber { get; set; }
-            public double _result = 0.0;
+            private double _result = 0.0;
 
             private bool isZero(double Nmb)
             {
@@ -78,7 +78,6 @@ namespace simple_form_calculator
 
                 return frstnumber / scndnumber;
             }
-
         }
 
         private bool frstNmb = true;
@@ -87,8 +86,14 @@ namespace simple_form_calculator
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if(frstNmb) lblfrst.Text = "";
-            if(scndNmb) lblscnd.Text = "";
+            lblfrst.Text = ""; lblscnd.Text = ""; op_stat = 'g';
+
+            frstNmb = true; scndNmb = false;
+
+            btnPlus.Enabled = true;
+            btnMinus.Enabled = true;
+            btnMulti.Enabled = true;
+            btnDivid.Enabled = true;
         }
 
         private void bzero_Click(object sender, EventArgs e)
@@ -97,41 +102,97 @@ namespace simple_form_calculator
             else lblscnd.Text += 0; 
         }
 
+        private char op_stat = 'g';
+
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            if (frstNmb)  frstNmb = false; scndNmb = true; 
+            if (frstNmb && lblfrst.Text != "")
+            {
+                frstNmb = false; scndNmb = true; 
+                btnMinus.Enabled = false;
+                btnMulti.Enabled = false;
+                btnDivid.Enabled = false;
+                btnPlus.Enabled = false; op_stat = 'p'; // p = plus
+            }
+            else
+            {
+                lblfrst.Text = "0";
+                frstNmb = false; scndNmb = true;
+                btnMinus.Enabled = false;
+                btnMulti.Enabled = false;
+                btnDivid.Enabled = false;
+                btnPlus.Enabled = false; op_stat = 'p'; // p = plus
+            }
 
-            btnMinus.Enabled = false;
-            btnMulti.Enabled = false;
-            btnDivid.Enabled = false;
 
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            if(frstNmb) frstNmb = false; scndNmb = true;
+            if (frstNmb && lblfrst.Text != "")
+            {
+                frstNmb = false; scndNmb = true;
+                btnPlus.Enabled = false;
+                btnMulti.Enabled = false;
+                btnDivid.Enabled = false;
+                btnMinus.Enabled = false; op_stat = 'n'; // n = minus
+            }
+            else
+            {
+                lblfrst.Text = "0";
+                frstNmb = false; scndNmb = true;
+                btnPlus.Enabled = false;
+                btnMulti.Enabled = false;
+                btnDivid.Enabled = false;
+                btnMinus.Enabled = false; op_stat = 'n'; // n = minus
+            }
 
-            btnPlus.Enabled = false;
-            btnMulti.Enabled = false;
-            btnDivid.Enabled = false;
+
         }
 
         private void btnMulti_Click(object sender, EventArgs e)
         {
-            if (frstNmb) frstNmb = false; scndNmb = true;
+            if (frstNmb && lblfrst.Text != "")
+            {
+                frstNmb = false; scndNmb = true;
+                btnPlus.Enabled = false;
+                btnMinus.Enabled = false;
+                btnDivid.Enabled = false;
+                btnMulti.Enabled = false; op_stat = 'm'; // m = multi
+            }
+            else
+            {
+                lblfrst.Text = "0";
+                frstNmb = false; scndNmb = true;
+                btnPlus.Enabled = false;
+                btnMinus.Enabled = false;
+                btnDivid.Enabled = false;
+                btnMulti.Enabled = false; op_stat = 'm'; // m = multi
+            }
 
-            btnPlus.Enabled = false;
-            btnMinus.Enabled = false;
-            btnDivid.Enabled = false;
         }
 
         private void btnDivid_Click(object sender, EventArgs e)
         {
-            if (frstNmb) frstNmb = false; scndNmb = true;
+            if (frstNmb && lblfrst.Text != "")
+            {
+                frstNmb = false; scndNmb = true;
+                btnPlus.Enabled = false;
+                btnMinus.Enabled = false;
+                btnMulti.Enabled = false;
+                btnDivid.Enabled = false; op_stat = 'd'; // d = divid
 
-            btnPlus.Enabled = false;
-            btnMinus.Enabled = false;
-            btnMulti.Enabled = false;
+            }
+            else
+            {
+                lblfrst.Text = "0";
+                frstNmb = false; scndNmb = true;
+                btnPlus.Enabled = false;
+                btnMinus.Enabled = false;
+                btnMulti.Enabled = false;
+                btnDivid.Enabled = false; op_stat = 'd'; // d = divid
+            }
+
         }
 
         private void bone_Click(object sender, EventArgs e)
@@ -192,6 +253,8 @@ namespace simple_form_calculator
         {
             frstNmb = true;
 
+            op_stat = 'g';
+
             btnPlus.Enabled = true;
             btnMinus.Enabled = true;
             btnMulti.Enabled = true;
@@ -206,32 +269,38 @@ namespace simple_form_calculator
 
             //clsCalculator cal = new clsCalculator(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
 
-            if (btnPlus.Enabled)
+            if (lblscnd.Text == "") lblscnd.Text = "0";
+
+            if (op_stat == 'p' )
             {
                 results = 0;                 
                 results = clsCalculator.Add(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
             
             } 
-            else if (btnMinus.Enabled)
+            else if (op_stat == 'n')
             {
                 results = 0;
                 results = clsCalculator.Sub(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
             
             } 
-            else if (btnMulti.Enabled)
+            else if (op_stat == 'm')
             {
                 results = 0;
                 results = clsCalculator.Mlt(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));                        
             } 
-            else
+            else if (op_stat == 'd')
             {
                 results = 0;
                 results = clsCalculator.Div(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
-            }        
+            } 
+            else
+            {
+                MessageBox.Show("Choose your operation","What do you wanna do?", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
 
             lblresult.Text = results.ToString();
 
-            lblfrst.Text = ""; lblscnd.Text = "";
+            lblfrst.Text = ""; lblscnd.Text = ""; op_stat = 'g';
 
             frstNmb = true; scndNmb = false;
             
