@@ -19,15 +19,16 @@ namespace simple_form_calculator
 
         public class clsCalculator 
         {
-            clsCalculator(double fstNmb, double sndNmb)
+            
+            public clsCalculator(double fstNmb, double sndNmb)
             {
-                _frstnumber = fstNmb;
-                _scndnumber = sndNmb;
+                this._frstnumber = fstNmb;
+                this._scndnumber = sndNmb;
             }
 
-            double _frstnumber = 0.0;
-            double _scndnumber = 0.0;
-            double _result = 0.0;
+            private double _frstnumber { get; set; }
+            private double _scndnumber { get; set; }
+            private double _result = 0.0;
 
             private bool isZero(double Nmb)
             {
@@ -68,7 +69,7 @@ namespace simple_form_calculator
                 return _result;
             }
 
-            public double Div(double fn, double sn)
+            public double Div()
             {
                 _result = 0.0;
 
@@ -200,35 +201,34 @@ namespace simple_form_calculator
         }
 
 
-        //clsCalculator cal = new clsCalculator();
-        clsCalculator cal = new clsCalculator(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
 
         private void btnEqual_Click(object sender, EventArgs e)
         {
             lblfrst.Text = ""; lblfrst.Text += 0; lblscnd.Text = ""; lblscnd.Text += 0;
 
+            clsCalculator cal = new clsCalculator(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
 
             if (btnPlus.Enabled)
             {
                 results = 0;                 
-                results = cal.Add(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
+                results = cal.Add();
             
             } 
             else if (btnMinus.Enabled)
             {
                 results = 0;
-                results = cal.Sub(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
+                results = cal.Sub();
             
             } 
             else if (btnMulti.Enabled)
             {
                 results = 0;
-                results = cal.Mlt(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));                        
+                results = cal.Mlt();                        
             } 
             else
             {
                 results = 0;
-                results = cal.Div(Convert.ToDouble(lblfrst.Text), Convert.ToDouble(lblscnd.Text));
+                results = cal.Div();
             }        
 
             lblresult.Text = results.ToString();
