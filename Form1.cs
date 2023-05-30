@@ -17,8 +17,13 @@ namespace simple_form_calculator
             InitializeComponent();
         }
 
-        private class Calculator 
+        class Calculator 
         {
+            Calculator(double fstNmb, double sndNmb)
+            {
+                _lastResult = fstNmb;
+                _lastResult = sndNmb;
+            }
 
             double _lastNmbr = 0.0;
             double _lastResult = 0.0;
@@ -206,7 +211,7 @@ namespace simple_form_calculator
         {
             lblfrst.Text = ""; lblfrst.Text += 0; lblscnd.Text = ""; lblscnd.Text += 0;
 
-            Calculator cal = new Calculator();
+            Calculator cal = new Calculator(Convert.ToDouble(lblfrst.Text) , Convert.ToDouble(lblscnd.Text));
 
             if (btnPlus.Enabled)
             {
